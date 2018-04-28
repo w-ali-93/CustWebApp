@@ -1,0 +1,31 @@
+﻿<h1>Customer Data</h1>
+
+<p>This component demonstrates fetching Customer data from the server.</p>
+
+<p *ngIf="!custList"><em>Loading...</em></p>
+
+<p>
+    <a [routerLink]="['/register-customer']">Create New</a>
+</p>
+
+<table class='table' *ngIf="custList">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cust of custList">
+            <td>{{ cust.id }}</td>
+            <td>{{ cust.firstname }}</td>
+            <td>{{ cust.lastname }}</td>
+            <td>
+            <td>
+                <a [routerLink]="['/customer/edit/', cust.id]">Edit</a> |
+                <a [routerLink]="" (click)="delete(cust.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

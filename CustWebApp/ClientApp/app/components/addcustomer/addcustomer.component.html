@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <h1>{{title}}</h1>
+    <h3>Customer</h3>
+    <hr />
+    <form [formGroup]="customerForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+        
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="firstname">First Name</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="firstname">
+            </div>
+            <span class="text-danger" *ngIf="customerForm.hasError('required', 'firstname') && formDir.submitted">
+                First Name is required.
+            </span>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-12" for="lastname">Last Name</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="lastname">
+            </div>
+            <span class="text-danger" *ngIf="customerForm.hasError('required', 'lastname') && formDir.submitted">
+                Last Name is required.
+            </span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Save</button>
+            <button class="btn" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</body>
+</html>  
